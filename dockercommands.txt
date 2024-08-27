@@ -1,0 +1,16 @@
+docker version
+docker -v
+docker info
+docker help
+docker login
+docker images
+docker ps
+docker run ubuntu -it ubuntu
+docker system df
+docker pull selenium/hub
+docker pull selenium/node-firefox:latest
+docker pull selenium/node-chrome:latest
+docker network create grid
+docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub selenium/hub
+docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSRIBE_PORT=4443 selenium/node-chrome:latest
+docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSRIBE_PORT=4443 selenium/node-firefox:latest
